@@ -44,6 +44,21 @@ model.fit(X_train, y_train)
 
 # Evaluate
 preds = model.predict(X_test)
+import streamlit as st
+import joblib
+
+st.title("AWS ML Deployment Demo")
+st.write("House Price / Classification Model")
+
+model = joblib.load("model/model.joblib")
+
+feature1 = st.number_input("Feature 1", value=3.0)
+feature2 = st.number_input("Feature 2", value=30.0)
+
+if st.button("Predict"):
+    prediction = model.predict([[feature1, feature2]])[0]
+    st.success(f"Prediction: {'Class 1' if prediction == 1 else 'Class 0'}")
+
 print(f"Accuracy: {accuracy_score(y_test, preds):.2f}")
 
 # Save model
