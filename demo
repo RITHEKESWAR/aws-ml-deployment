@@ -1,0 +1,9 @@
+
+**requirements.txt**
+```txt
+scikit-learn
+pandas
+numpy
+joblib
+streamlit
+boto3
